@@ -1,0 +1,33 @@
+<html>
+<head>
+<style>
+h2 { text-decoration: underline; }
+</style>
+</head>
+
+<h2>Employee Tables</h2>
+<h3>EMPBASE</h3>
+<p>empbase is the base employee record that contains information that is not likely to change: ssn, dob</p>
+
+<h3>EMPINFO</h3>
+<p>empinfo contains the employee information that is more viewable and possible changes: marital status, change indicator, first name, last name, mi</p>
+
+<h3>EMPADDR</h3>
+<p>empaddr contains a listing of employee addresses to include type of address, whether it is active or inactive</p>
+
+<h3>EMPTELE</h3>
+<p>emptele contains employee telephone info to include type and active or inactive</p>
+
+<h2>Position/Jobs Tables</h2>
+
+<h3>POSDATA</h3>
+<p>posdata is a listing for each position that can be filled with contract information that isn't going to change</p>
+
+<h3>JOBINFO</h3>
+<p>jobinfo is the information that results from an employee filling a position. This may be seperated in the future for now there is no need to keep a hist table as we will just add another row for the employee id and have the job they left listed as T</p>
+<h2>Payroll Tables</h2>
+
+<p>In the future payroll may be offloaded to another application. This is an initial stab at the activity and as such the naming convention should be something extensible i.e. not payinfo but instead paydedn payhist pay</p>
+</html>
+
+
