@@ -1,0 +1,11 @@
+
+
+
+enter edit view an employee record
+enter edit view a position
+enter edit view a job - which is an employee in a position
+enter edit view a department
+enter edit view an account
+* payroll
+enter edit view phone number information
+enter edit view address info
