@@ -84,6 +84,7 @@ window.onclick = function(event) {
 echo "<a href=\"" . WIKI_URL . "\">Wiki</a><br>";
 echo "<a href=\"" . FORMS_HOME . "\">Forms</a><br>";
 echo "<a href=\"" . BOOKSHELF_HOME . "\">Tanner Bookshelf</a><br>";
+echo "<a href=\"test_employee.php\">Add New Employee</a><br>";
 ?>
   </div>
 </div>

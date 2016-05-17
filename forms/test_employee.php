@@ -20,33 +20,33 @@
 	//if(!isset($_POST[]) {
 //		echo "Not posted. Here's your sid: " . generate_sid();
 ?>
-
+	<p>Add New Employee</p>
 	<form action="test_employee.php" method="POST">
-		<p>Employee SID: <input type="text" name="sid" value=<?php echo generate_sid(); ?> />
-		<p>First Name: <input type="text" name="fname" />
-		<p>Last Name: <input type="text" name="lname" />
-		<p>MI: <input type="text" name="mi" />
-		<p>Sex: <input type="text" name="sex" />
-		<p>DOB (DD-MMM-YYYY): <input type="text" name="dob" />
-		<p>Marital Status: <input type="text" name="marital" />
+		<p>Employee SID: <input type="text" name="sid" value=<?php echo generate_sid(); ?>></p>
+		<p>First Name: <input type="text" name="fname" ></p>
+		<p>Last Name: <input type="text" name="lname" ></p>
+		<p>MI: <input type="text" name="mi" ></p>
+		<p>Sex: <input type="text" name="sex" ></p?
+		<p>DOB (DD-MMM-YYYY): <input type="text" name="dob" ></p>
+		<p>Marital Status: <input type="text" name="marital" ></p>
 
-		<input type="submit" value="submit" />
+		<input type="submit" value="submit" >
 	</form>
 <?php
    	}
 	else {
 ?>
-
+	<p>Employee Added Successfully</p>
   	<form action="review.php" method="post">
 	<div class="fedform">	
 
 		<p>Employee SID: <input type="text" name="sid" value=<?php echo $_POST['sid']; ?> /></p>
-		<p>First Name: <input type="text" name="fname" value=<?php echo $_POST['fname']; ?> />
-		<p>Last Name: <input type="text" name="lname" value=<?php echo $_POST['lname']; ?>/>
-		<p>MI: <input type="text" name="mi" value=<?php echo $_POST['mi']; ?>/>
-		<p>Sex: <input type="text" name="sex" value=<?php echo $_POST['sex']; ?>/>
-		<p>DOB (DD-MMM-YYYY): <input type="text" name="dob" value=<?php echo $_POST['dob']; ?>/>
-		<p>Marital Status: <input type="text" name="marital" value=<?php echo $_POST['marital']; ?>/>
+		<p>First Name: <input type="text" name="fname" value=<?php echo $_POST['fname']; ?> /></p>
+		<p>Last Name: <input type="text" name="lname" value=<?php echo $_POST['lname']; ?> /></p>
+		<p>MI: <input type="text" name="mi" value=<?php echo $_POST['mi']; ?> /></p>
+		<p>Sex: <input type="text" name="sex" value=<?php echo $_POST['sex']; ?>/></p>
+		<p>DOB (DD-MMM-YYYY): <input type="text" name="dob" value=<?php echo $_POST['dob']; ?> /></p>
+		<p>Marital Status: <input type="text" name="marital" value=<?php echo $_POST['marital']; ?> /></p>
 
 	</div>
 	</form>
