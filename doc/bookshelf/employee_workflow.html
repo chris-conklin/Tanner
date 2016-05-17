@@ -1,0 +1,45 @@
+<h1>Tanner Employee Data Workflow</h1>
+
+<p>
+Employee data is stored in two tables in the Tanner system. The EMPBASE and EMPINFO tables are linked via SID
+</p>
+<p>The form EMPRW is the main access point for entering new employee information as well as editing information. On edits a new EMPINFO record is created with the changed data and the existing active EMPINFO record (change ind == 0) is set to 1
+</p>
+
+
+
+
+CREATE TABLE IF NOT EXISTS `EMPBASE` (
+  `empbase_sid` varchar(6) NOT NULL COMMENT 'System generated 6 char id',
+  `empbase_dob` date NOT NULL COMMENT 'Employee dob',
+  `empbase_ssn` varchar(11) NOT NULL,
+  `empbase_id` varchar(9) NOT NULL COMMENT 'Employee company id number',
+  `empbase_effective_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date of record creation',
+  `empbase_source` varchar(9) NOT NULL COMMENT 'ID of data entry source',
+  PRIMARY KEY (`empbase_sid`),
+  UNIQUE KEY `empbase_id` (`empbase_id`),
+  KEY `empbase_sid` (`empbase_sid`,`empbase_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+</pre>
+<h3>EMPINFO</h3>
+<p>empinfo contains the employee information that is more viewable and possible changes: marital status, change indicator, first name, last name, mi</p>
+
+<pre>
+--
+-- Table structure for table `EMPINFO`
+--
+
+CREATE TABLE IF NOT EXISTS `EMPINFO` (
+  `empinfo_sid` varchar(6) NOT NULL COMMENT 'System identification number',
+  `empinfo_first_name` varchar(24) NOT NULL COMMENT 'Employee first name',
+  `empinfo_last_name` varchar(32) NOT NULL,
+  `empinfo_mi` varchar(1) DEFAULT NULL,
+  `empinfo_marital_status` varchar(1) NOT NULL COMMENT 'M, S, D, L legally sep',
+  `empinfo_change_ind` tinyint(4) DEFAULT '0' COMMENT 'Change of 0 is active record 1 is old',
+  `empinfo_effective_date` date NOT NULL COMMENT 'The creation date of this record',
+  `empinfo_life_ind` varchar(1) NOT NULL COMMENT 'L or Deceased',
+  `empinfo_privacy_ind` varchar(1) NOT NULL COMMENT 'Display info to public entities Y/N',
+  `empinfo_status` varchar(1) NOT NULL COMMENT 'A,T,L,P',
+  PRIMARY KEY (`empinfo_sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
