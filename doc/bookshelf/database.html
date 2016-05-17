@@ -8,9 +8,56 @@ h2 { text-decoration: underline; }
 <h2>Employee Tables</h2>
 <h3>EMPBASE</h3>
 <p>empbase is the base employee record that contains information that is not likely to change: ssn, dob</p>
+<pre>
+--
+-- Table structure for table `EMPBASE`
+--
 
+CREATE TABLE IF NOT EXISTS `EMPBASE` (
+  `empbase_sid` varchar(6) NOT NULL COMMENT 'System generated 6 char id',
+  `empbase_dob` date NOT NULL COMMENT 'Employee dob',
+  `empbase_ssn` varchar(11) NOT NULL,
+  `empbase_id` varchar(9) NOT NULL COMMENT 'Employee company id number',
+  `empbase_effective_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Date of record creation',
+  `empbase_source` varchar(9) NOT NULL COMMENT 'ID of data entry source',
+  PRIMARY KEY (`empbase_sid`),
+  UNIQUE KEY `empbase_id` (`empbase_id`),
+  KEY `empbase_sid` (`empbase_sid`,`empbase_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+</pre>
 <h3>EMPINFO</h3>
 <p>empinfo contains the employee information that is more viewable and possible changes: marital status, change indicator, first name, last name, mi</p>
+
+<pre>
+--
+-- Table structure for table `EMPINFO`
+--
+
+CREATE TABLE IF NOT EXISTS `EMPINFO` (
+  `empinfo_sid` varchar(6) NOT NULL COMMENT 'System identification number',
+  `empinfo_first_name` varchar(24) NOT NULL COMMENT 'Employee first name',
+  `empinfo_last_name` varchar(32) NOT NULL,
+  `empinfo_mi` varchar(1) DEFAULT NULL,
+  `empinfo_marital_status` varchar(1) NOT NULL COMMENT 'M, S, D, L legally sep',
+  `empinfo_change_ind` tinyint(4) DEFAULT '0' COMMENT 'Change of 0 is active record 1 is old',
+  `empinfo_effective_date` date NOT NULL COMMENT 'The creation date of this record',
+  `empinfo_life_ind` varchar(1) NOT NULL COMMENT 'L or Deceased',
+  `empinfo_privacy_ind` varchar(1) NOT NULL COMMENT 'Display info to public entities Y/N',
+  `empinfo_status` varchar(1) NOT NULL COMMENT 'A,T,L,P',
+  PRIMARY KEY (`empinfo_sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `EMPINFO`
+--
+ALTER TABLE `EMPINFO`
+  ADD CONSTRAINT `EMPINFO_ibfk_1` FOREIGN KEY (`empinfo_sid`) REFERENCES `EMPBASE` (`empbase_sid`) ON DELETE CASCADE ON UPDATE CASCADE;
+</pre>
 
 <h3>EMPADDR</h3>
 <p>empaddr contains a listing of employee addresses to include type of address, whether it is active or inactive</p>
@@ -28,6 +75,10 @@ h2 { text-decoration: underline; }
 <h2>Payroll Tables</h2>
 
 <p>In the future payroll may be offloaded to another application. This is an initial stab at the activity and as such the naming convention should be something extensible i.e. not payinfo but instead paydedn payhist pay</p>
+
+<h2>System Tables</h2>
+
+
 </html>
 
 
