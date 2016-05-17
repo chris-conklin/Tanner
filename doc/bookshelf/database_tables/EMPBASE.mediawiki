@@ -1,9 +1,0 @@
-
-<!--
-Table data for `EMPBASE`
--->
-
-{| class="wikitable sortable" style="text-align:center;"
-|+'''EMPBASE'''
-|}
-
