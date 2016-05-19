@@ -82,9 +82,10 @@ window.onclick = function(event) {
   <div id="myDropdown" class="dropdown-content">
 <?php
 echo "<a href=\"" . WIKI_URL . "\">Wiki</a><br>";
-echo "<a href=\"" . FORMS_HOME . "\">Forms</a><br>";
+echo "<a href=\"" . APP_ROOT . FORMS_HOME . "\">Forms</a><br>";
 echo "<a href=\"" . BOOKSHELF_HOME . "\">Tanner Bookshelf</a><br>";
-echo "<a href=\"test_employee.php\">Add New Employee</a><br>";
+#echo "<a href=\"test_employee.php\">Add New Employee</a><br>";
+echo "<a href=\"" . FORMS_HOME . "enter_employee_data.php\">Add New Employee</a><br>";
 ?>
   </div>
 </div>

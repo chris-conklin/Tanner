@@ -13,8 +13,14 @@
 	.submitted { background-color: grey; padding: 5px; }
 	.unsubmitted { background-color: white; padding: 5px; }
 </style>
-<script>
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
 </script>
 </head>
 <body>
@@ -32,6 +38,7 @@
 		<p>MI: <input type="text" name="mi" ></p>
 		<p>Sex: <input type="text" name="sex" ></p>
 		<p>DOB (DD-MMM-YYYY): <input type="text" name="dob" ></p>
+<p>Date: <input type="text" id="datepicker"></p>
 		<p>Marital Status: <input type="text" name="marital" ></p>
 
 		<input type="submit" value="Add Employee" >

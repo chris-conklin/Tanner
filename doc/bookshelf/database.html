@@ -5,6 +5,17 @@ h2 { text-decoration: underline; }
 </style>
 </head>
 
+<body>
+<pre>
+  _____                           
+ |_   _|_ _ _ __  _ __   ___ _ __ 
+   | |/ _` | '_ \| '_ \ / _ \ '__|
+   | | (_| | | | | | | |  __/ |   
+   |_|\__,_|_| |_|_| |_|\___|_|   
+                                  
+</pre>
+
+
 <h2>Employee Tables</h2>
 <h3>EMPBASE</h3>
 <p>empbase is the base employee record that contains information that is not likely to change: ssn, dob</p>
@@ -24,7 +35,6 @@ CREATE TABLE IF NOT EXISTS `EMPBASE` (
   UNIQUE KEY `empbase_id` (`empbase_id`),
   KEY `empbase_sid` (`empbase_sid`,`empbase_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 </pre>
 <h3>EMPINFO</h3>
 <p>empinfo contains the employee information that is more viewable and possible changes: marital status, change indicator, first name, last name, mi</p>
@@ -45,26 +55,62 @@ CREATE TABLE IF NOT EXISTS `EMPINFO` (
   `empinfo_life_ind` varchar(1) NOT NULL COMMENT 'L or Deceased',
   `empinfo_privacy_ind` varchar(1) NOT NULL COMMENT 'Display info to public entities Y/N',
   `empinfo_status` varchar(1) NOT NULL COMMENT 'A,T,L,P',
+  `empinfo_action` varchar(128) NOT NULL,
   PRIMARY KEY (`empinfo_sid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `EMPINFO`
---
-ALTER TABLE `EMPINFO`
-  ADD CONSTRAINT `EMPINFO_ibfk_1` FOREIGN KEY (`empinfo_sid`) REFERENCES `EMPBASE` (`empbase_sid`) ON DELETE CASCADE ON UPDATE CASCADE;
 </pre>
 
 <h3>EMPADDR</h3>
 <p>empaddr contains a listing of employee addresses to include type of address, whether it is active or inactive</p>
+<pre>
+
+--
+-- Table structure for table `EMPADDR`
+--
+
+CREATE TABLE IF NOT EXISTS `EMPADDR` (
+  `empaddr_sid` varchar(6) NOT NULL COMMENT 'employee sid',
+  `empaddr_type` varchar(1) NOT NULL COMMENT 'O office mail, R office physical, H home',
+  `empaddr_status` varchar(1) NOT NULL COMMENT 'A active, I inactive',
+  `empaddr_effective_date` date NOT NULL COMMENT 'Date begin using ',
+  `empaddr_activity_date` date NOT NULL COMMENT 'Date of entry/modification',
+  `empaddr_street1` varchar(64) NOT NULL COMMENT 'Street address line 1',
+  `empaddr_street2` varchar(64) DEFAULT NULL COMMENT 'Street address line 2',
+  `empaddr_boxno` varchar(10) DEFAULT NULL COMMENT 'PO Box number',
+  `empaddr_aptno` varchar(8) DEFAULT NULL COMMENT 'Apartment number',
+  `empaddr_city` varchar(64) NOT NULL COMMENT 'City',
+  `empaddr_state` varchar(2) NOT NULL COMMENT 'State',
+  `empaddr_county` varchar(24) DEFAULT NULL COMMENT 'County',
+  `empaddr_zip` varchar(5) NOT NULL COMMENT '5 digit zip',
+  `empaddr_ext_zip` varchar(4) DEFAULT NULL COMMENT '4 digit extended zip',
+  `empaddr_action` varchar(128) NOT NULL COMMENT 'Action taken on record'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+</pre>
 
 <h3>EMPTELE</h3>
 <p>emptele contains employee telephone info to include type and active or inactive</p>
 
+<pre>
+--
+-- Table structure for table `EMPTELE`
+--
+
+CREATE TABLE IF NOT EXISTS `EMPTELE` (
+  `emptele_sid` varchar(6) NOT NULL,
+  `emptele_type` varchar(1) NOT NULL,
+  `emptele_status` varchar(1) NOT NULL,
+  `emptele_effective_date` date NOT NULL,
+  `emptele_activity_date` date NOT NULL,
+  `emptele_ext` varchar(10) DEFAULT NULL,
+  `emptele_number` varchar(10) NOT NULL,
+  `emptele_primary_ind` varchar(1) NOT NULL,
+  `emptele_private` varchar(1) NOT NULL,
+  `emptele_action` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+</pre>
+<hr>
 <h2>Position/Jobs Tables</h2>
 
 <h3>POSDATA</h3>
