@@ -26,7 +26,7 @@
 		<p>First Name: <input type="text" name="fname" ></p>
 		<p>Last Name: <input type="text" name="lname" ></p>
 		<p>MI: <input type="text" name="mi" ></p>
-		<p>Sex: <input type="text" name="sex" ></p?
+		<p>Sex: <input type="text" name="sex" ></p>
 		<p>DOB (DD-MMM-YYYY): <input type="text" name="dob" ></p>
 		<p>Marital Status: <input type="text" name="marital" ></p>
 
@@ -44,7 +44,7 @@
 		<p>First Name: <input type="text" name="fname" value=<?php echo $_POST['fname']; ?> /></p>
 		<p>Last Name: <input type="text" name="lname" value=<?php echo $_POST['lname']; ?> /></p>
 		<p>MI: <input type="text" name="mi" value=<?php echo $_POST['mi']; ?> /></p>
-		<p>Sex: <input type="text" name="sex" value=<?php echo $_POST['sex']; ?>/></p>
+		<p>Sex: <input type="text" name="sex" value=<?php echo $_POST['sex']; ?> /></p>
 		<p>DOB (DD-MMM-YYYY): <input type="text" name="dob" value=<?php echo $_POST['dob']; ?> /></p>
 		<p>Marital Status: <input type="text" name="marital" value=<?php echo $_POST['marital']; ?> /></p>
 
